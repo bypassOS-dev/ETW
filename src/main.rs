@@ -12,41 +12,67 @@ async fn main() {
         io::stdin()
             .read_line(&mut eyes)
             .unwrap();
-        let normal_eyes = match eyes.trim().parse::<u64>() { 
-            Ok(0) => {
-                println!("Number must be more than 0!");
-                continue;
-            }
-            Ok(n) => n,
-            Err(_) => {
-                println!("Enter a number more than 0!");
-                continue;
-            }
-        };
 
-        break normal_eyes;
+        match eyes.trim().parse::<u64>() { 
+            Ok(0) => {
+                println!("Number must be more than 0! Try again:   ");
+                continue;
+            }
+            Ok(n) => break n,
+            Err(_) => {
+                println!("Enter a number more than 0! Try again:   ");
+                continue;
+            }
+        }
     };
     //=======================================
     //===============Water=====================
     println!("Ok! Now tell me: how often u wanna drink water (minutes)?   ");
     let mut water = String::new();
 
-    io::stdin()
-        .read_line(&mut water)
-        .unwrap();
+    let water = loop {
+        water.clear();
 
-    let water = water.trim().parse::<u64>().unwrap();
+        io::stdin()
+            .read_line(&mut water)
+            .unwrap();
+
+        match water.trim().parse::<u64>() {
+            Ok(0) => {
+                println!("Number must be more than 0! Try again:  ");
+                continue;
+            },
+            Ok(n) => break n,
+            Err(_) => {
+                println!("Enter a number more than 0! Try again:   ");
+                continue;
+            }
+        }
+    };
     //==========================================
     //===============Stop the work=================
     println!("Great! But when u wanna stop the work and get rest? (also at minutes)?   ");
     let mut walk = String::new();
 
-    io::stdin()
-        .read_line(&mut walk)
-        .unwrap();
+    let walk = loop {
+        io::stdin()
+            .read_line(&mut walk)
+            .unwrap();
 
-    let walk = walk.trim().parse::<u64>().unwrap();
+        match walk.trim().parse::<u64>() {
+            Ok(0) => {
+                println!("Number must be more than 0! Try again:  ");
+                continue;
+            }
+            Ok(n) => break n,
+            Err(_) => {
+                println!("Enter a number more than 0! Try again:   ");
+                continue;
+            }
+        }
+    };
     //============================================= 
+    //=============================================
 
     if eyes > walk || water > walk {
         eprintln!("\n\n\n\n Problem ------>   Your work-time is too short \n\n\n\n\n");

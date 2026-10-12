@@ -1,4 +1,4 @@
-pub async fn make_check(eyes: String, water: String, walk: String) -> (bool, bool, bool)  {
+pub fn make_check(eyes: &String, water: &String, walk: &String) -> (bool, bool, bool)  {
     //=============================================
     //====First check: Is input numbers?============
     let mut eyes_bool = match eyes.trim().parse::<u64>() { 
@@ -35,6 +35,6 @@ pub async fn make_check(eyes: String, water: String, walk: String) -> (bool, boo
         }
     }
     
-    (walk_bool, water_bool, eyes_bool)
+    (eyes_bool, water_bool, walk_bool)
     
 }

@@ -1,6 +1,6 @@
 use eframe::egui;
 
-mod unused;
+mod check;
 
 #[tokio::main]
 async fn main() -> eframe::Result<()> {
@@ -52,6 +52,10 @@ impl eframe::App for MyApp {
 
                     ui.add_space(20.0);
                     ui.add(egui::TextEdit::singleline(&mut self.water).hint_text("How often you wanna drink in minutes:  "));
+
+                    if ui.button(egui::RichText::new("Save").size(20.0)).clicked() {
+
+                    }
                 });
             } else {
                 
